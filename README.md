@@ -32,15 +32,10 @@ Configuration files
 -----------------------------------
 Copy the needed configuration and setup the module as a route handler for the route `weather`.
 
-**config, src, views**
+**config, views**
 
 ```
 rsync -av vendor/jeneljenel/weather-module/config ./
-```
-```
-rsync -av vendor/jeneljenel/weather-module/src/Weather ./src
-rsync -av vendor/jeneljenel/weather-module/src/Curl ./src
-
 ```
 ```
 rsync -av vendor/jeneljenel/weather-module/view/weather ./view
@@ -89,6 +84,11 @@ Dependency
 
 This is a Anax modulen and primarly intended to be used together with the Anax framework.
 
+
+License
+------------------
+
+This software carries a MIT license. See [LICENSE.txt](LICENSE.txt) for details.
 
 
 

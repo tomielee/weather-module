@@ -7,7 +7,5 @@
 
 # Copy the configuration files
 rsync -av vendor/jeneljenel/weather-module/config ./
-rsync -av vendor/jeneljenel/weather-module/src/Weather ./src
-rsync -av vendor/jeneljenel/weather-module/src/Curl ./src
 rsync -av vendor/jeneljenel/weather-module/view/weather ./view
 
