@@ -11,7 +11,7 @@ namespace Anax\View;
   <p style="display: none;" id="lat"><?= $lat ?></p>
   <p style="display: none;" id="lon"><?= $lon ?></p>
 
-<div class="map" id="mapid"></div>
+<div class="map" id="mapid" height="250px"></div>
 <br>
 <br>
 <script type="text/javascript">
