@@ -82,7 +82,7 @@ class WeatherModel
      */
     private function getUrls($lat, $lon, $days) : array
     {
-        $days = 1; //@TODO REMOVE!!!
+        // $days = 1; //@TODO REMOVE!!!
         for ($i=0; $i < $days; $i++) {
             $url = $this->baseUrl;
             $url .= $this->api_key;

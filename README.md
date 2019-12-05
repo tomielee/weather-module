@@ -45,7 +45,7 @@ rsync -av vendor/jeneljenel/weather-module/view/weather ./view
 ```
 $ cd config
 $ cp api_sample.php api.php
-$ nano config/api.php
+$ nano api.php
 ```
 enter a valid api_key, ctrl + x, Y and enter
 
