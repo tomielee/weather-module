@@ -4,7 +4,6 @@ namespace Jenel\Weather;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-use Jenel\Weather\WeatherModel;
 
 /**
  * WeatherController

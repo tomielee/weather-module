@@ -3,7 +3,6 @@
 namespace Jenel\Weather;
 
 use Anax\DI\DIFactoryConfig;
-use Anax\Request\Request;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,6 +22,7 @@ class WeatherApiControllerTest extends TestCase
         //setup di.
         $this->di = new DIFactoryConfig();
         $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $this->di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
         $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
     
