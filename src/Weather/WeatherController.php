@@ -45,7 +45,7 @@ class WeatherController implements ContainerInjectableInterface
         $request = $this->di->get("request");
         $error = $request->getGet("error");
 
-        $formData = $this->WeatherModel->getFormData();
+        // $formData = $this->WeatherModel->getFormData();
 
         $data = [
             "title" => $title,
@@ -58,7 +58,7 @@ class WeatherController implements ContainerInjectableInterface
             $page->add("weather/error", ["error" => "No valid geografic position. Try again."]);
             $error = $request->setGet("error", false);
         };
-        $page->add("weather/form", $formData);
+        $page->add("weather/form", []);
         return $page->render(["title" => $title]);
     }
 

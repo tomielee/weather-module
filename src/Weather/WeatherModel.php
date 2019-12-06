@@ -42,23 +42,23 @@ class WeatherModel
         $this->curl = $curl;
     }
 
-    /**
-     * Return form data.
-     * @return array
-     */
-    public function getFormData() : array
-    {
-        $data = [
-            "label" => "Enter location, an address, or a city.",
-            "input" => [
-                "location" => "",
-            ],
-            "button" => [
-                "getWeather" => "go",
-            ]
-            ];
-        return $data;
-    }
+    // /**
+    //  * Return form data.
+    //  * @return array
+    //  */
+    // public function getFormData() : array
+    // {
+    //     $data = [
+    //         "label" => "Enter location, an address, or a city.",
+    //         "input" => [
+    //             "location" => "",
+    //         ],
+    //         "button" => [
+    //             "getWeather" => "go",
+    //         ]
+    //         ];
+    //     return $data;
+    // }
     /**
      * return url to fetch
      * @param params    arrays with geografic location (lat and long)
