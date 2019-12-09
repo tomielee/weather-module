@@ -62,6 +62,7 @@ class WeatherModel
             $this->url = $this->baseUrl;
         } else {
             $this->url = $this->baseUrl . $this->key . "/{$lat},{$lon}" . $this->exclude; 
+            echo($this->url);
         }
         return $this->url;
     }
@@ -129,7 +130,7 @@ class WeatherModel
         if (sizeof($result) <= 2) {
             $data = [
                 "contentTitle" => "Oops...",
-                "error" => $result['error'],
+                "error" => $result['error']
             ];
             return $data;
         }
@@ -194,7 +195,6 @@ class WeatherModel
         } else if ($radio == "past") {
             $forecast = $this->getPast($lat, $lon);
         } 
-        $forecast['error'] = false;
         $data = [
             "title" => "Weather forecast",
             "position" => $this->geo->getDisplayName(),
