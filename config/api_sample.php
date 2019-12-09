@@ -7,6 +7,6 @@
 */
 
 return [
-    "darksky_key" => "yoursecretkey",
-    "darksky_url" => "https://api.darksky.net/forecast/",
+    "key" => "yoursecretkey",
+    "baseUrl" => "https://api.darksky.net/forecast/",
 ];

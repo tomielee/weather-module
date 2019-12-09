@@ -47,9 +47,10 @@ class WeatherApiController implements ContainerInjectableInterface
         $weatherModel = $this->WeatherModel;
 
         $location = $request->getGet("location", "");
+        $radio = $request->getGet("forecast", "week");
         $geo = $weatherModel->getGeo($location);
-        $data = $weatherModel->getAll($geo);
-
+        $data = $weatherModel->getAll($radio);
+        // var_dump($data);
         return [$data];
     }
 

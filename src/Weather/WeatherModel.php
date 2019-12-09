@@ -20,20 +20,26 @@ class WeatherModel
     private $url;
     protected $api_key;
 
-    /**
-     * set the baseurl
-     */
-    public function setBaseUrl($url)
+    public function __construct()
     {
-        $this->baseUrl = $url;
+        $this->test = false;
     }
+
     /**
-     * set the apikey
+     * setup the basics
+     * api-key
+     * baseurl
+     * test
+     * url to curl one
+     * urls to curl multi
      */
-    public function setApiKey($key)
+    public function setConfig($param) : void
     {
-        $this->api_key = $key;
+        foreach ($param as $key => $value) {
+            $this->$key = $value;
+        }
     }
+
     /**
      * inject the weathermodel with the $di->service curls
      */
@@ -42,37 +48,22 @@ class WeatherModel
         $this->curl = $curl;
     }
 
-    // /**
-    //  * Return form data.
-    //  * @return array
-    //  */
-    // public function getFormData() : array
-    // {
-    //     $data = [
-    //         "label" => "Enter location, an address, or a city.",
-    //         "input" => [
-    //             "location" => "",
-    //         ],
-    //         "button" => [
-    //             "getWeather" => "go",
-    //         ]
-    //         ];
-    //     return $data;
-    // }
     /**
-     * return url to fetch
-     * @param params    arrays with geografic location (lat and long)
-     *
-     * @return string
+     * set url to fetch
+     * @param lat latitude
+     * @param lon longitude
+     * @param test bool 
+     * 
+     * @return void
      */
     private function getUrl($lat, $lon) : string
     {
-        $url = $this->baseUrl;
-        $url .= $this->api_key;
-        $url .= "/{$lat},{$lon}";
-        $url .= "?exclude=hourly,minutely,flags";
-        $url .= "&units=si";
-        return $url;
+        if($this->test) {
+            $this->url = $this->baseUrl;
+        } else {
+            $this->url = $this->baseUrl . $this->key . "/{$lat},{$lon}?exclude=hourly,minutely,flags&units=si"; 
+        }
+        return $this->url;
     }
 
     /**
@@ -82,18 +73,20 @@ class WeatherModel
      */
     private function getUrls($lat, $lon, $days) : array
     {
-        // $days = 1; //@TODO REMOVE!!!
-        for ($i=0; $i < $days; $i++) {
-            $url = $this->baseUrl;
-            $url .= $this->api_key;
-            $date = time() - ($i * 24 * 60 * 60);
-            // echo(date('D j M Y', $date));
-            $url .="/{$lat},{$lon},{$date}";
-            $url .= "?exclude=hourly,minutely,flags,daily";
-            $url .= "&units=si";
-            $urls[] = $url;
-        };
-        return $urls;
+        if ($this->test) {
+            $this->urls = [ 0 => $this->baseUrl ];
+
+        } else {
+            for ($i=0; $i < $days; $i++) {
+                $date = time() - ($i * 24 * 60 * 60); // echo(date('D j M Y', $date));
+                $url = $this->baseUrl . $this->key . "/{$lat},{$lon},{$date}?exclude=hourly,minutely,flags,daily&units=si";
+                $urls[] = $url;
+            };
+            $this->urls = $urls;
+
+        }
+
+        return $this->urls;
     }
 
     /**
@@ -104,47 +97,23 @@ class WeatherModel
      */
     public function getGeo($location)
     {
-        // $curl = $this->di->get("curl");
         $curl = $this->curl;
+        if ($this->test) {
+           $url = $this->geoUrl; 
+        } else {
+            $url = "https://nominatim.openstreetmap.org/?addressdetails=1&q={$location}&format=json&email=asdf@hotmail.se&limit=1";
+        }
 
-        $url = "https://nominatim.openstreetmap.org/?addressdetails=1&q={$location}&format=json&email=asdf@hotmail.se&limit=1";
-        $geo = $curl->curlOne($url);
-        return $geo;
+        $result = $curl->curlOne($url);
+        $geo = [
+            "geo" => new Geo($result)
+        ];
+        $this->setConfig($geo);
+        return $geo["geo"];
     }
 
 
-    /**
-     * Return latitude
-     * @param geo array holding info
-     *
-     * @return lat string
-     */
-    public function getLat($geo) : string
-    {
-        return $geo[0]['lat'];
-    }
 
-    /**
-     * Return longitude
-     * @param geo array holding info
-     *
-     * @return lat string
-     */
-    public function getLon($geo) : string
-    {
-        return $geo[0]['lon'];
-    }
-
-    /**
-     * Return displayName
-     * @param geo array holding info
-     *
-     * @return lat string
-     */
-    public function getDisplayName($geo) : string
-    {
-        return $geo[0]['display_name'];
-    }
 
 
     /**
@@ -155,17 +124,17 @@ class WeatherModel
     {
         $curl = $this->curl;
         $url = $this->getUrl($lat, $lon);
-        $weather = $curl->curlOne($url);
+        $result = $curl->curlOne($url);
 
-        if (sizeof($weather)<= 2) {
+        if (sizeof($result) <= 2) {
             $data = [
                 "contentTitle" => "Oops...",
-                "error" => $weather['error'],
+                "error" => $result['error'],
             ];
             return $data;
         }
 
-        $this->Forecast = new Forecast($weather);
+        $this->Forecast = new Forecast($result);
         $week[0] = $this->Forecast->getToday();
 
         for ($i=1; $i < 7; $i++) {
@@ -173,7 +142,7 @@ class WeatherModel
         }
         $data = [
             "contentTitle" => "Forecast for today and next 7 days",
-            "weather" => $week,
+            "result" => $week,
         ];
         return $data;
     }
@@ -185,11 +154,10 @@ class WeatherModel
     public function getPast($lat, $lon) : array
     {
         $curl = $this->curl;
-        // $curl = $this->di->get("curl");
         $urls = $this->getUrls($lat, $lon, 30);
-        $forecast = $curl->curlMulti($urls);
+        $result = $curl->curlMulti($urls);
 
-        foreach ($forecast as $day) {
+        foreach ($result as $day) {
             if (sizeof($day) <= 2) {
                 $data = [
                     "contentTitle" => "Oops...",
@@ -198,45 +166,67 @@ class WeatherModel
                 return $data;
             } else {
                 $this->Forecast = new Forecast($day);
-                $weather[] = $this->Forecast->getToday();
+                $data[] = $this->Forecast->getToday();
             }
         }
 
-        $data = [
+        $past = [
             "contentTitle" => "The weather today and the past 30 days",
-            "today" => $weather[0],
-            "weather" => $weather,
+            "today" => $data[0],
+            "result" => $data
         ];
-        return $data;
+        return $past;
     }
 
     /**
      * Return all
      */
-    public function getAll($geo) : array
+    public function getAll($radio) : array
     {
-        if (empty($geo)) {
+        if (empty($this->geo)) {
             return newError("Error", "No location provided");
         };
 
-        $error = false;
-        $lat = $this->getLat($geo);
-        $lon = $this->getLon($geo);
-        $position = $this->getDisplayName($geo);
-
-        $week = $this->getWeek($lat, $lon);
-        $past = $this->getPast($lat, $lon);
-        $week['error'] = $error;
-        $past['error'] = $error;
+        $lat = $this->geo->getLat();
+        $lon = $this->geo->getLon();
+        if($radio == "week") {
+            $forecast = $this->getWeek($lat, $lon);
+        } else if ($radio == "past") {
+            $forecast = $this->getPast($lat, $lon);
+        } 
+        $forecast['error'] = false;
         $data = [
             "title" => "Weather forecast",
-            "position" => $position,
+            "position" => $this->geo->getDisplayName(),
             "lat" => $lat,
             "lon" => $lon,
-            "week" => $week,
-            "past" => $past,
+            "result" => $forecast,
         ];
 
         return $data;
     }
+
+
+    // /**
+    //  * set the baseurl
+    //  */
+    // public function setTest($test)
+    // {
+    //     $this->test = $test;
+    // }
+
+    // /**
+    //  * set the baseurl
+    //  */
+    // public function setBaseUrl($url)
+    // {
+    //     $this->baseUrl = $url;
+    // }
+    // /**
+    //  * set the apikey
+    //  */
+    // public function setApiKey($key)
+    // {
+    //     $this->api_key = $key;
+    // }
 }

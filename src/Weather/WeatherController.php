@@ -43,9 +43,8 @@ class WeatherController implements ContainerInjectableInterface
         $title = "Weather";
         $page = $this->di->get("page");
         $request = $this->di->get("request");
+        $response = $this->di->get("response");
         $error = $request->getGet("error");
-
-        // $formData = $this->WeatherModel->getFormData();
 
         $data = [
             "title" => $title,
@@ -75,18 +74,18 @@ class WeatherController implements ContainerInjectableInterface
         $location = $request->getPost("location");
         $geo = $weatherModel->getGeo($location);
 
-        if (empty($geo)) {
+        if (empty($location) || empty($geo)) {
             $response = $this->di->get("response");
             return $response->redirect("weather/?error=true");
         }
 
-        $data = $weatherModel->getAll($geo);
+        $radio = $request->getPost("radio");
+        $data = $weatherModel->getAll($radio);
+    
         $page->add("weather/index", $data);
         $page->add("weather/header", []);
         $page->add("weather/map", ["lat" =>$data['lat'], "lon" => $data['lon']]);
-        $page->add("weather/result", $data['week']);
-        $page->add("weather/result", $data['past']);
-
+        $page->add("weather/result", $data['result']);
         return $page->render($data);
     }
 
@@ -96,7 +95,7 @@ class WeatherController implements ContainerInjectableInterface
     */
     public function apiActionGet() : object
     {
-        $baseURL= $this->di->get("request")->getBaseUrl();
+        $baseURL = $this->di->get("request")->getBaseUrl();
 
         $data = [
             "title" => "API"

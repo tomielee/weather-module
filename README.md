@@ -47,7 +47,10 @@ $ cd config
 $ cp api_sample.php api.php
 $ nano api.php
 ```
-enter a valid api_key, ctrl + x, Y and enter
+Enter your valid apikey for [darksky.net](https://darksky.net/dev). 
+Exit the texteditor with `ctrl + x `.
+Enter  `Y ` to save the chagnes.
+Click return to save the file.
 
 
 Install using scaffold postprocessing file

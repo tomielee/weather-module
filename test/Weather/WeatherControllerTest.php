@@ -27,13 +27,22 @@ class WeatherControllerTest extends TestCase
         $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
         $this->di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
-
         $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
     
         // View helpers uses the global $di so it needs its value
         $di = $this->di;
 
-        //initialize the controller.
+        //setup mock
+        $mock = [
+            "key" => "123456789",
+            // "baseUrl" => "http://www.student.bth.se/~jelf18/dbwebb-kurser/ramverk1/me/weather/mock?",
+            "baseUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/mock",
+            "test" => true,
+            "geoUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/geomock"
+        ];
+
+        $weatherModel = $di->get("darksky");
+        $weatherModel->setConfig($mock);
         $this->controller = new WeatherController();
         $this->controller->setDI($this->di);
         $this->controller->initialize();
@@ -68,8 +77,20 @@ class WeatherControllerTest extends TestCase
         $locationValid = "Stockholm";
         $locationNotValid = "";
 
-        //test Valid
+        //test Valid with options week
         $this->di->get("request")->setPost("location", $locationValid);
+        $this->di->get("request")->setPost("radio", "week");
+
+        $res = $controller->indexActionPost();
+        $body = $res->getBody();
+        $this->assertInstanceOf("Anax\Response\Response", $res);
+        $this->assertContains("Weather forecast ", $body);
+
+
+        //test Valid with options past
+        $this->di->get("request")->setPost("location", $locationValid);
+        $this->di->get("request")->setPost("radio", "past");
+
         $res = $controller->indexActionPost();
         $body = $res->getBody();
         $this->assertInstanceOf("Anax\Response\Response", $res);

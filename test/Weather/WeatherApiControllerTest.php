@@ -29,6 +29,19 @@ class WeatherApiControllerTest extends TestCase
         // View helpers uses the global $di so it needs its value
         $di = $this->di;
 
+        //setup mock
+        $mock = [
+            "key" => "123456789",
+            // "baseUrl" => "http://www.student.bth.se/~jelf18/dbwebb-kurser/ramverk1/me/weather/mock?",
+            "baseUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/mock?",
+            "geoUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/geomock?",
+
+            "test" => true,
+        ];
+
+        $weatherModel = $di->get("darksky");
+        $weatherModel->setConfig($mock);
+
         //initialize the controller.
         $this->controller = new WeatherApiController();
         $this->controller->setDI($this->di);

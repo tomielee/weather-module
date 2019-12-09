@@ -12,8 +12,7 @@ return [
                 
                 $cfg = $this->get("configuration");
                 $config = $cfg->load("api.php");
-                $weatherModel->setApiKey($config['config']["darksky_key"]);
-                $weatherModel->setBaseUrl($config['config']["darksky_url"]);
+                $weatherModel->setConfig($config['config']);
                 return $weatherModel;
             }
         ],
