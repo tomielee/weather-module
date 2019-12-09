@@ -41,10 +41,10 @@ rsync -av vendor/jeneljenel/weather-module/config ./
 rsync -av vendor/jeneljenel/weather-module/view/weather ./view
 ```
 
-**You have to create your own api.php file. Copy /config/api_sample.php**
+**You have to create your own weather.php file. Copy /config/weather_sample.php**
 ```
 $ cd config
-$ cp api_sample.php api.php
+$ cp weather_sample.php weather.php
 $ nano api.php
 ```
 Enter your valid apikey for [darksky.net](https://darksky.net/dev). 
@@ -52,6 +52,17 @@ Exit the texteditor with `ctrl + x `.
 Enter  `Y ` to save the chagnes.
 Click return to save the file.
 
+**To run tests with mock. You have to create your own weathermock.php file. Copy /config/weathermock_sample.php**
+Default is set after [installation and setup for Anax](#Install-and-setup-Anax) and run on port 8080. 
+```
+$ cd config
+$ cp weather_sample.php weathermock.php
+$ nano api.php
+```
+Check if correct port.
+Exit the texteditor with `ctrl + x `.
+Enter  `Y ` to save the chagnes.
+Click return to save the file.
 
 Install using scaffold postprocessing file
 ------------------------------------
