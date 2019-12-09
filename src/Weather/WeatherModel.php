@@ -27,8 +27,8 @@ class WeatherModel
 
     /**
      * setup the basics
-     * api-key
-     * baseurl
+     * key
+     * baseUrl
      * test
      * url to curl one
      * urls to curl multi
@@ -61,7 +61,7 @@ class WeatherModel
         if($this->test) {
             $this->url = $this->baseUrl;
         } else {
-            $this->url = $this->baseUrl . $this->key . "/{$lat},{$lon}?exclude=hourly,minutely,flags&units=si"; 
+            $this->url = $this->baseUrl . $this->key . "/{$lat},{$lon}" . $this->exclude; 
         }
         return $this->url;
     }
@@ -79,7 +79,7 @@ class WeatherModel
         } else {
             for ($i=0; $i < $days; $i++) {
                 $date = time() - ($i * 24 * 60 * 60); // echo(date('D j M Y', $date));
-                $url = $this->baseUrl . $this->key . "/{$lat},{$lon},{$date}?exclude=hourly,minutely,flags,daily&units=si";
+                $url = $this->baseUrl . $this->key . "/{$lat},{$lon},{$date}" . $this->excludeMulti;
                 $urls[] = $url;
             };
             $this->urls = $urls;
@@ -101,7 +101,7 @@ class WeatherModel
         if ($this->test) {
            $url = $this->geoUrl; 
         } else {
-            $url = "https://nominatim.openstreetmap.org/?addressdetails=1&q={$location}&format=json&email=asdf@hotmail.se&limit=1";
+            $url = $this->geoUrl . "&q={$location}";
         }
 
         $result = $curl->curlOne($url);

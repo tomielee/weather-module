@@ -9,7 +9,7 @@ use Anax\Commons\ContainerInjectableTrait;
  * WeatherController
  * get weather forecast from location.
  * 
- * uses $di "darksky" -> WeatherModel
+ * uses $di "weather" -> WeatherModel
  * uses $di "curl -> curl functions
  */
 class WeatherApiController implements ContainerInjectableInterface
@@ -30,7 +30,7 @@ class WeatherApiController implements ContainerInjectableInterface
      */
     public function initialize() : void
     {
-        $this->WeatherModel = $this->di->get("darksky");
+        $this->WeatherModel = $this->di->get("weather");
         $this->WeatherModel->setCurl($this->di->get("curl"));
     }
 

@@ -30,17 +30,11 @@ class WeatherApiControllerTest extends TestCase
         $di = $this->di;
 
         //setup mock
-        $mock = [
-            "key" => "123456789",
-            // "baseUrl" => "http://www.student.bth.se/~jelf18/dbwebb-kurser/ramverk1/me/weather/mock?",
-            "baseUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/mock?",
-            "geoUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/geomock?",
+        $weatherModel = $di->get("weather");
+        $cfg = $this->di->get("configuration");
 
-            "test" => true,
-        ];
-
-        $weatherModel = $di->get("darksky");
-        $weatherModel->setConfig($mock);
+        $config = $cfg->load("weathermock.php");
+        $weatherModel->setConfig($config['config']); 
 
         //initialize the controller.
         $this->controller = new WeatherApiController();

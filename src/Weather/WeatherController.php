@@ -9,7 +9,7 @@ use Anax\Commons\ContainerInjectableTrait;
  * WeatherController
  * get weather forecast from location.
  * 
- * uses $di "darksky" -> WeatherModel
+ * uses $di "weather" -> WeatherModel
  * uses $di "curl -> curl functions
  */
 class WeatherController implements ContainerInjectableInterface
@@ -24,7 +24,7 @@ class WeatherController implements ContainerInjectableInterface
      */
     public function initialize() : void
     {
-        $this->WeatherModel = $this->di->get("darksky");
+        $this->WeatherModel = $this->di->get("weather");
 
         //inject the model with $di service
         $this->WeatherModel->setCurl($this->di->get("curl"));
@@ -53,9 +53,9 @@ class WeatherController implements ContainerInjectableInterface
         ];
         
         $page->add("weather/index", $data);
+        $error = $this->di->get("session")->getOnce("error");
         if ($error) {
             $page->add("weather/error", ["error" => "No valid geografic position. Try again."]);
-            $error = $request->setGet("error", false);
         };
         $page->add("weather/form", []);
         return $page->render(["title" => $title]);
@@ -76,7 +76,8 @@ class WeatherController implements ContainerInjectableInterface
 
         if (empty($location) || empty($geo)) {
             $response = $this->di->get("response");
-            return $response->redirect("weather/?error=true");
+            $this->di->get("session")->set("error", true);
+            return $response->redirect("weather/");
         }
 
         $radio = $request->getPost("radio");

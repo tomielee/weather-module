@@ -13,7 +13,7 @@ class DarkSkyMock
         $weather = [
   "latitude" => 61.06037785,
   "longitude" => 14.2150873169591,
-  "timezone" => "Europe/Stockholm",
+  "timezone" => "Europe/Stockholm MOCK",
   "currently" => [
     "time" => 1575886847,
     "summary" => "Overcast",

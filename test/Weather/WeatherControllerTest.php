@@ -33,16 +33,11 @@ class WeatherControllerTest extends TestCase
         $di = $this->di;
 
         //setup mock
-        $mock = [
-            "key" => "123456789",
-            // "baseUrl" => "http://www.student.bth.se/~jelf18/dbwebb-kurser/ramverk1/me/weather/mock?",
-            "baseUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/mock",
-            "test" => true,
-            "geoUrl" => "http://localhost:8080/dbwebb/ramverk1-a/a/htdocs/weather/geomock"
-        ];
+        $weatherModel = $di->get("weather");
+        $cfg = $this->di->get("configuration");
 
-        $weatherModel = $di->get("darksky");
-        $weatherModel->setConfig($mock);
+        $config = $cfg->load("weathermock.php");
+        $weatherModel->setConfig($config['config']);        
         $this->controller = new WeatherController();
         $this->controller->setDI($this->di);
         $this->controller->initialize();
@@ -85,7 +80,6 @@ class WeatherControllerTest extends TestCase
         $body = $res->getBody();
         $this->assertInstanceOf("Anax\Response\Response", $res);
         $this->assertContains("Weather forecast ", $body);
-
 
         //test Valid with options past
         $this->di->get("request")->setPost("location", $locationValid);

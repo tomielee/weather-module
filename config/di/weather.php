@@ -4,14 +4,14 @@
  */
 return [
     "services" => [
-        "darksky" => [
+        "weather" => [
             "shared" => true,
             "active" => false,
             "callback" => function () {
                 $weatherModel = new \Jenel\Weather\WeatherModel();
                 
                 $cfg = $this->get("configuration");
-                $config = $cfg->load("api.php");
+                $config = $cfg->load("weather.php");
                 $weatherModel->setConfig($config['config']);
                 return $weatherModel;
             }
