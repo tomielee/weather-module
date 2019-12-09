@@ -127,10 +127,10 @@ class WeatherModel
         $url = $this->getUrl($lat, $lon);
         $result = $curl->curlOne($url);
 
-        if (sizeof($result) <= 2) {
+        if (array_key_exists('error', $result)) {
             $data = [
                 "contentTitle" => "Oops...",
-                "error" => $result['error']
+                "result" => $result
             ];
             return $data;
         }
@@ -156,17 +156,18 @@ class WeatherModel
     {
         $curl = $this->curl;
         $urls = $this->getUrls($lat, $lon, 30);
-        $result = $curl->curlMulti($urls);
 
-        foreach ($result as $day) {
-            if (sizeof($day) <= 2) {
+        $multiresult = $curl->curlMulti($urls);
+
+        foreach ($multiresult as $result) {
+        if (array_key_exists('error', $result)) {
                 $data = [
                     "contentTitle" => "Oops...",
-                    "error" => $day['error'],
+                    "result" => $result
                 ];
                 return $data;
             } else {
-                $this->Forecast = new Forecast($day);
+                $this->Forecast = new Forecast($result);
                 $data[] = $this->Forecast->getToday();
             }
         }

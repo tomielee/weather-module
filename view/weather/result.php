@@ -7,8 +7,8 @@ namespace Anax\View;
  */
 ?>
 <h1><?= $contentTitle ?> </h1>
-<?php if ($error) { ?> 
-    <div class="error-msg"><?= ucFirst($error) ?></div>
+<?php if (array_key_exists('error', $result)) { ?> 
+    <div class="error-msg"><?= ucFirst($result['error']) ?></div>
 
 <?php } 
     else { ?>
