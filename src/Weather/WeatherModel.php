@@ -52,16 +52,16 @@ class WeatherModel
      * set url to fetch
      * @param lat latitude
      * @param lon longitude
-     * @param test bool 
-     * 
+     * @param test bool
+     *
      * @return void
      */
     private function getUrl($lat, $lon) : string
     {
-        if($this->test) {
+        if ($this->test) {
             $this->url = $this->baseUrl;
         } else {
-            $this->url = $this->baseUrl . $this->key . "/{$lat},{$lon}" . $this->exclude; 
+            $this->url = $this->baseUrl . $this->key . "/{$lat},{$lon}" . $this->exclude;
             echo($this->url);
         }
         return $this->url;
@@ -76,7 +76,6 @@ class WeatherModel
     {
         if ($this->test) {
             $this->urls = [ 0 => $this->baseUrl ];
-
         } else {
             for ($i=0; $i < $days; $i++) {
                 $date = time() - ($i * 24 * 60 * 60); // echo(date('D j M Y', $date));
@@ -84,7 +83,6 @@ class WeatherModel
                 $urls[] = $url;
             };
             $this->urls = $urls;
-
         }
 
         return $this->urls;
@@ -100,7 +98,7 @@ class WeatherModel
     {
         $curl = $this->curl;
         if ($this->test) {
-           $url = $this->geoUrl; 
+            $url = $this->geoUrl;
         } else {
             $url = $this->geoUrl . "&q={$location}";
         }
@@ -160,7 +158,7 @@ class WeatherModel
         $multiresult = $curl->curlMulti($urls);
 
         foreach ($multiresult as $result) {
-        if (array_key_exists('error', $result)) {
+            if (array_key_exists('error', $result)) {
                 $data = [
                     "contentTitle" => "Oops...",
                     "result" => $result
@@ -191,11 +189,11 @@ class WeatherModel
 
         $lat = $this->geo->getLat();
         $lon = $this->geo->getLon();
-        if($radio == "week") {
+        if ($radio == "week") {
             $forecast = $this->getWeek($lat, $lon);
         } else if ($radio == "past") {
             $forecast = $this->getPast($lat, $lon);
-        } 
+        }
         $data = [
             "title" => "Weather forecast",
             "position" => $this->geo->getDisplayName(),

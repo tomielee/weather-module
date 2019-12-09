@@ -1,7 +1,6 @@
 <?php
 namespace Jenel\Mock;
 
-
 class GeoMock
 {
     /**

@@ -10,8 +10,7 @@ namespace Anax\View;
 <?php if (array_key_exists('error', $result)) { ?> 
     <div class="error-msg"><?= ucFirst($result['error']) ?></div>
 
-<?php } 
-    else { ?>
+<?php } else { ?>
     <?php for ($i=0; $i < count($result); $i++) {?> 
 <div class="weatherbox">
     <p class="weatherbox-sum"><?= $result[$i]['sum'] ?></p>

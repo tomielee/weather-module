@@ -37,7 +37,7 @@ class WeatherControllerTest extends TestCase
         $cfg = $this->di->get("configuration");
 
         $config = $cfg->load("weathermock.php");
-        $weatherModel->setConfig($config['config']);        
+        $weatherModel->setConfig($config['config']);
         $this->controller = new WeatherController();
         $this->controller->setDI($this->di);
         $this->controller->initialize();
@@ -57,7 +57,7 @@ class WeatherControllerTest extends TestCase
         $this->assertContains("<title>Weather ", $body);
 
         //test with error
-        $this->di->get("request")->setGet("error", true);
+        $this->di->get("session")->set("error", true);
         $res = $controller->indexActionGet();
         $body = $res->getBody();
         $this->assertContains("No valid geografic position. Try again.", $body);

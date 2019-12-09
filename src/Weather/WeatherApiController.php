@@ -8,7 +8,7 @@ use Anax\Commons\ContainerInjectableTrait;
 /**
  * WeatherController
  * get weather forecast from location.
- * 
+ *
  * uses $di "weather" -> WeatherModel
  * uses $di "curl -> curl functions
  */
@@ -38,10 +38,10 @@ class WeatherApiController implements ContainerInjectableInterface
      * Return json for method get
      * GET mountpoint api/json?=<location>
      * @param location
-     * 
+     *
      * @return array
      */
-    public function jsonActionGet() : array 
+    public function jsonActionGet() : array
     {
         $request = $this->di->get("request");
         $weatherModel = $this->WeatherModel;
@@ -69,5 +69,4 @@ class WeatherApiController implements ContainerInjectableInterface
         ];
         return [$json, 403];
     }
-
 }

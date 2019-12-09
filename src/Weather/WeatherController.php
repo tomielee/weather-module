@@ -8,7 +8,7 @@ use Anax\Commons\ContainerInjectableTrait;
 /**
  * WeatherController
  * get weather forecast from location.
- * 
+ *
  * uses $di "weather" -> WeatherModel
  * uses $di "curl -> curl functions
  */

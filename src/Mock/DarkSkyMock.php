@@ -1,7 +1,6 @@
 <?php
 namespace Jenel\Mock;
 
-
 class DarkSkyMock
 {
     /**
@@ -11,35 +10,35 @@ class DarkSkyMock
     public function getWeather() : array
     {
         $weather = [
-  "latitude" => 61.06037785,
-  "longitude" => 14.2150873169591,
-  "timezone" => "Europe/Stockholm MOCK",
-  "currently" => [
-    "time" => 1575886847,
-    "summary" => "Overcast",
-    "icon" => "cloudy",
-    "precipIntensity" => 0.0377,
-    "precipProbability" => 0.06,
-    "precipType" => "snow",
-    "precipAccumulation" => 0.0458,
-    "temperature" => -2.92,
-    "apparentTemperature" => -6.68,
-    "dewPoint" => -5.08,
-    "humidity" => 0.85,
-    "pressure" => 982.6,
-    "windSpeed" => 2.67,
-    "windGust" => 6.18,
-    "windBearing" => 326,
-    "cloudCover" => 0.94,
-    "uvIndex" => 0,
-    "visibility" => 16.093,
-    "ozone" => 265.1
-  ],
-  "daily" => [
-    "summary" => "Possible light snow on Wednesday and Saturday.",
-    "icon" => "snow",
-    "data" => [
-      [
+        "latitude" => 61.06037785,
+        "longitude" => 14.2150873169591,
+        "timezone" => "Europe/Stockholm MOCK",
+        "currently" => [
+        "time" => 1575886847,
+        "summary" => "Overcast",
+        "icon" => "cloudy",
+        "precipIntensity" => 0.0377,
+        "precipProbability" => 0.06,
+        "precipType" => "snow",
+        "precipAccumulation" => 0.0458,
+        "temperature" => -2.92,
+        "apparentTemperature" => -6.68,
+        "dewPoint" => -5.08,
+        "humidity" => 0.85,
+        "pressure" => 982.6,
+        "windSpeed" => 2.67,
+        "windGust" => 6.18,
+        "windBearing" => 326,
+        "cloudCover" => 0.94,
+        "uvIndex" => 0,
+        "visibility" => 16.093,
+        "ozone" => 265.1
+        ],
+        "daily" => [
+        "summary" => "Possible light snow on Wednesday and Saturday.",
+        "icon" => "snow",
+        "data" => [
+        [
         "time" => 1575846000,
         "summary" => "Overcast throughout the day.",
         "icon" => "cloudy",
@@ -80,8 +79,8 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1575932400,
         "apparentTemperatureMax" => -2.28,
         "apparentTemperatureMaxTime" => 1575867600
-      ],
-      [
+        ],
+        [
         "time" => 1575932400,
         "summary" => "Windy and foggy overnight.",
         "icon" => "clear-day",
@@ -122,8 +121,8 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1575934080,
         "apparentTemperatureMax" => -7.17,
         "apparentTemperatureMaxTime" => 1575984840
-      ],
-      [
+        ],
+        [
         "time" => 1576018800,
         "summary" => "Possible light snow and windy in the morning.",
         "icon" => "snow",
@@ -164,8 +163,8 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1576018800,
         "apparentTemperatureMax" => -0.75,
         "apparentTemperatureMaxTime" => 1576066080
-      ],
-      [
+        ],
+        [
         "time" => 1576105200,
         "summary" => "Overcast throughout the day.",
         "icon" => "cloudy",
@@ -206,8 +205,8 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1576191600,
         "apparentTemperatureMax" => -1.88,
         "apparentTemperatureMaxTime" => 1576122300
-      ],
-      [
+        ],
+        [
         "time" => 1576191600,
         "summary" => "Foggy throughout the day.",
         "icon" => "fog",
@@ -248,8 +247,8 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1576240080,
         "apparentTemperatureMax" => -3.88,
         "apparentTemperatureMaxTime" => 1576191600
-      ],
-      [
+        ],
+        [
         "time" => 1576278000,
         "summary" => "Possible light snow in the afternoon.",
         "icon" => "snow",
@@ -290,8 +289,8 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1576287600,
         "apparentTemperatureMax" => -2.36,
         "apparentTemperatureMaxTime" => 1576325340
-      ],
-      [
+        ],
+        [
         "time" => 1576364400,
         "summary" => "Mostly cloudy throughout the day.",
         "icon" => "fog",
@@ -332,8 +331,8 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1576446060,
         "apparentTemperatureMax" => -2.9,
         "apparentTemperatureMaxTime" => 1576390620
-      ],
-      [
+        ],
+        [
         "time" => 1576450800,
         "summary" => "Clear throughout the day.",
         "icon" => "clear-day",
@@ -374,145 +373,145 @@ class DarkSkyMock
         "apparentTemperatureMinTime" => 1576485120,
         "apparentTemperatureMax" => -4.86,
         "apparentTemperatureMaxTime" => 1576464120
-      ]
-    ]
-  ],
-  "alerts" => [
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ]
+        ]
+        ],
+        "alerts" => [
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575625393,
-      "expires" => 1576057508,
-      "description" => "When => Night towards Saturday until Saturday afternoon. Where => The southern part Intensity => Total amount 10-15 cm of fresh snow Comment => Most intense during late night and Saturday morning.\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575625393,
+        "expires" => 1576057508,
+        "description" => "When => Night towards Saturday until Saturday afternoon. Where => The southern part Intensity => Total amount 10-15 cm of fresh snow Comment => Most intense during late night and Saturday morning.\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575815108,
-      "expires" => 1576247108,
-      "description" => "When => Until late tonight Where => The whole area Intensity => 5-15 cm with the highest values in the northern part Comment => In the southern part, the snowfall turns into rain towards the evening whcih may freeze on on cold roads.\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575815108,
+        "expires" => 1576247108,
+        "description" => "When => Until late tonight Where => The whole area Intensity => 5-15 cm with the highest values in the northern part Comment => In the southern part, the snowfall turns into rain towards the evening whcih may freeze on on cold roads.\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575712028,
-      "expires" => 1576144209,
-      "description" => "When => Where => Intensity => Comment =>\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575712028,
+        "expires" => 1576144209,
+        "description" => "When => Where => Intensity => Comment =>\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575712209,
-      "expires" => 1576144209,
-      "description" => "When => On Saturday Where => The southern part Intensity => - Comment => Rain or snow followed by freezing.\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575712209,
+        "expires" => 1576144209,
+        "description" => "When => On Saturday Where => The southern part Intensity => - Comment => Rain or snow followed by freezing.\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575711290,
-      "expires" => 1576143308,
-      "description" => "When => From Sunday dinner snowfall and in the rest of Sunday Where => The whole area Intensity => 10-15 cm Comment =>\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575711290,
+        "expires" => 1576143308,
+        "description" => "When => From Sunday dinner snowfall and in the rest of Sunday Where => The whole area Intensity => 10-15 cm Comment =>\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575690907,
-      "expires" => 1576122907,
-      "description" => "When => Saturday morning Where => The southern part Intensity => - Comment => Freezing rain that can cause slippery conditions.\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575690907,
+        "expires" => 1576122907,
+        "description" => "When => Saturday morning Where => The southern part Intensity => - Comment => Freezing rain that can cause slippery conditions.\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575745510,
-      "expires" => 1576177510,
-      "description" => "When => Sunday Where => The whole area Intensity => 5-15 cm with the highest values in the northern part Comment => In the southern part, the snowfall turns into rain during the evening\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575745510,
+        "expires" => 1576177510,
+        "description" => "When => Sunday Where => The whole area Intensity => 5-15 cm with the highest values in the northern part Comment => In the southern part, the snowfall turns into rain during the evening\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575625393,
-      "expires" => 1576057508,
-      "description" => "When => Tonight and night towards Saturday Where => The southern part Intensity => - Comment => Freezing rain that can cause slippery conditions.\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575625393,
+        "expires" => 1576057508,
+        "description" => "When => Tonight and night towards Saturday Where => The southern part Intensity => - Comment => Freezing rain that can cause slippery conditions.\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575593708,
-      "expires" => 1576025708,
-      "description" => "When => During night to Friday Where => In the northern part, from Siljan and north. Intensity => - Comment => Rain or snow-mixed rain on cold roads\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575593708,
+        "expires" => 1576025708,
+        "description" => "When => During night to Friday Where => In the northern part, from Siljan and north. Intensity => - Comment => Rain or snow-mixed rain on cold roads\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575571244,
-      "expires" => 1576003244,
-      "description" => "When => Until Friday morning Where => In the northern part, from Siljan and north. Intensity => - Comment => Rain or snow-mixed rain on cold roads\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575571244,
+        "expires" => 1576003244,
+        "description" => "When => Until Friday morning Where => In the northern part, from Siljan and north. Intensity => - Comment => Rain or snow-mixed rain on cold roads\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575537378,
-      "expires" => 1575969611,
-      "description" => "When => From night to Friday Where => Northern parts Intensity => Comment => Rain or snow-mixed rain on cold roads\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ],
-    [
-      "title" => "Dalarnas Län Utom Dalafjällen",
-      "regions" => [
+        ],
+        "severity" => "warning",
+        "time" => 1575537378,
+        "expires" => 1575969611,
+        "description" => "When => From night to Friday Where => Northern parts Intensity => Comment => Rain or snow-mixed rain on cold roads\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ],
+        [
+        "title" => "Dalarnas Län Utom Dalafjällen",
+        "regions" => [
         "Dalarna"
-      ],
-      "severity" => "warning",
-      "time" => 1575882353,
-      "expires" => 1576314611,
-      "description" => "When => During the afternoon Where => In the southern part Intensity => - Comment => Rain or wet snow followed by clear sky and freezing.\n",
-      "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
-    ]
-  ],
-  "offset" => 1
-];
+        ],
+        "severity" => "warning",
+        "time" => 1575882353,
+        "expires" => 1576314611,
+        "description" => "When => During the afternoon Where => In the southern part Intensity => - Comment => Rain or wet snow followed by clear sky and freezing.\n",
+        "uri" => "http =>//www.smhi.se/vadret/vadret-i-sverige/Varningar"
+        ]
+        ],
+        "offset" => 1
+        ];
 
         $data = [
             0 => $weather

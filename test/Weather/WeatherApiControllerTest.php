@@ -34,7 +34,7 @@ class WeatherApiControllerTest extends TestCase
         $cfg = $this->di->get("configuration");
 
         $config = $cfg->load("weathermock.php");
-        $weatherModel->setConfig($config['config']); 
+        $weatherModel->setConfig($config['config']);
 
         //initialize the controller.
         $this->controller = new WeatherApiController();

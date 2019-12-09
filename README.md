@@ -52,17 +52,6 @@ Exit the texteditor with `ctrl + x `.
 Enter  `Y ` to save the chagnes.
 Click return to save the file.
 
-**To run tests with mock. You have to create your own weathermock.php file. Copy /config/weathermock_sample.php**
-Default is set after [installation and setup for Anax](#Install-and-setup-Anax) and run on port 8080. 
-```
-$ cd config
-$ cp weathermock_sample.php weathermock.php
-$ nano weathermock.php
-```
-Check if correct port.
-Exit the texteditor with `ctrl + x `.
-Enter  `Y ` to save the chagnes.
-Click return to save the file.
 
 Install using scaffold postprocessing file
 ------------------------------------

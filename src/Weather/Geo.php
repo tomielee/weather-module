@@ -10,7 +10,7 @@ class Geo
     public function __construct($data)
     {
         $this->data =  $data;
-    }    
+    }
     
     public function getLat() : string
     {

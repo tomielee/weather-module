@@ -1,12 +1,12 @@
 <?php
 /**
- * sample. 
- * set your 
- * baseUrl 
+ * sample.
+ * set your
+ * baseUrl
  * geoUrl
- * 
+ *
  * should be http://localhost:{port}/{projectname}/htdocs/weather/
- * 
+ *
  * to run tests.
  * return [
  *    "key" => "yoursecretkey",
