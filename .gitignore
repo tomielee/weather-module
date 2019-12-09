@@ -5,7 +5,8 @@ memory::
 composer.lock
 
 
-/config/api.php
-/a
+/config/weather.php
+/config/weathermock.php
+
 
 .DS_Store
