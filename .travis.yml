@@ -18,6 +18,7 @@ git:
 
 before_script:
     - make install
+    - bash vendor/jeneljenel/weather-module/.anax/scaffold/postprocess.d/302_weather.bash
 
 script:
     - make check
