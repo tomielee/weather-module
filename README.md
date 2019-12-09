@@ -45,7 +45,7 @@ rsync -av vendor/jeneljenel/weather-module/view/weather ./view
 ```
 $ cd config
 $ cp weather_sample.php weather.php
-$ nano api.php
+$ nano weather.php
 ```
 Enter your valid apikey for [darksky.net](https://darksky.net/dev). 
 Exit the texteditor with `ctrl + x `.
@@ -56,8 +56,8 @@ Click return to save the file.
 Default is set after [installation and setup for Anax](#Install-and-setup-Anax) and run on port 8080. 
 ```
 $ cd config
-$ cp weather_sample.php weathermock.php
-$ nano api.php
+$ cp weathermock_sample.php weathermock.php
+$ nano weathermock.php
 ```
 Check if correct port.
 Exit the texteditor with `ctrl + x `.
