@@ -7,3 +7,5 @@ composer.lock
 
 /config/api.php
 /a
+
+.DS_Store
