@@ -1,7 +1,6 @@
 #!/usr/bin/env make
 #
-# An Anax module.
-# See organisation on GitHub: https://github.com/canax
+# An Weather-module.
 
 # ------------------------------------------------------------------------
 #
