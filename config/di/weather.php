@@ -11,11 +11,9 @@ return [
                 $weatherModel = new \Jenel\Weather\WeatherModel();
                 
                 $cfg = $this->get("configuration");
-                $config = $cfg->load("weather_sample.php");
-                var_dump($config);
+                $config = $cfg->load("weather.php");
 
                 $dataset = $config["config"] ?? null;
-                var_dump($dataset);
                 if (!$dataset) {
                     throw new Exception("Configuration file '$config' is missing.");
                 }
