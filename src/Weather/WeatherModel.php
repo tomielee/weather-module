@@ -17,8 +17,16 @@ function newError($status, $message)
 
 class WeatherModel
 {
+    /** declare variables */
+    private $Forecast;
+    private $curl;
+    private $baseUrl;
+    private $exclude;
+    private $excpludeMulti;
+    private $test;
     private $url;
-    protected $api_key;
+    private $urls;
+    protected $key;
 
     public function __construct()
     {
@@ -26,12 +34,7 @@ class WeatherModel
     }
 
     /**
-     * setup the basics
-     * key
-     * baseUrl
-     * test
-     * url to curl one
-     * urls to curl multi
+     * setup the basics: key, baseUrl, test, url to curl one, urls to curl multi
      */
     public function setConfig($param) : void
     {
@@ -50,9 +53,9 @@ class WeatherModel
 
     /**
      * set url to fetch
-     * @param lat latitude
-     * @param lon longitude
-     * @param test bool
+     *
+     * @var lat latitude
+     * @var lon longitude
      *
      * @return void
      */
@@ -62,7 +65,6 @@ class WeatherModel
             $this->url = $this->baseUrl;
         } else {
             $this->url = $this->baseUrl . $this->key . "/{$lat},{$lon}" . $this->exclude;
-            echo($this->url);
         }
         return $this->url;
     }
@@ -89,8 +91,8 @@ class WeatherModel
     }
 
     /**
-     * Get location
-     * @param location  string of location to get geografic position from
+     * Return latitude and longitude from a location string.
+     * @var location  string of location to get geografic position from
      *
      * @return geo  array with lat and long
      */
@@ -124,6 +126,7 @@ class WeatherModel
         $curl = $this->curl;
         $url = $this->getUrl($lat, $lon);
         $result = $curl->curlOne($url);
+        $week;
 
         if (array_key_exists('error', $result)) {
             $data = [
@@ -204,28 +207,4 @@ class WeatherModel
 
         return $data;
     }
-
-
-    // /**
-    //  * set the baseurl
-    //  */
-    // public function setTest($test)
-    // {
-    //     $this->test = $test;
-    // }
-
-    // /**
-    //  * set the baseurl
-    //  */
-    // public function setBaseUrl($url)
-    // {
-    //     $this->baseUrl = $url;
-    // }
-    // /**
-    //  * set the apikey
-    //  */
-    // public function setApiKey($key)
-    // {
-    //     $this->api_key = $key;
-    // }
 }

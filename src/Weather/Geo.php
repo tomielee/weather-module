@@ -7,6 +7,8 @@ namespace Jenel\Weather;
 
 class Geo
 {
+    private $data;
+    
     public function __construct($data)
     {
         $this->data =  $data;

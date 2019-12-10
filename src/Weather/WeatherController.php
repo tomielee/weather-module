@@ -16,6 +16,10 @@ class WeatherController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+    /**
+     * variables.
+     */
+    private $WeatherModel;
 
     /**
      * Initlize the object
@@ -43,8 +47,6 @@ class WeatherController implements ContainerInjectableInterface
         $title = "Weather";
         $page = $this->di->get("page");
         $request = $this->di->get("request");
-        $response = $this->di->get("response");
-        $error = $request->getGet("error");
 
         $data = [
             "title" => $title,

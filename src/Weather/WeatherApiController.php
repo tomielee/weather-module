@@ -17,9 +17,7 @@ class WeatherApiController implements ContainerInjectableInterface
     use ContainerInjectableTrait;
 
 
-    /**
-     * @var IPWeatherModel
-     */
+    /** Declare variables */
     private $WeatherModel;
 
 

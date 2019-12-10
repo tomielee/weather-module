@@ -7,6 +7,11 @@ namespace Jenel\Weather;
 
 class Forecast
 {
+    /**
+     * variables
+     */
+    private $data;
+
     public function __construct($data)
     {
         $this->data =  $data;
