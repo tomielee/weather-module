@@ -19,7 +19,7 @@ class Forecast
     }
     /**
      * Return a HTML icon
-     * @param string    icon name
+     * @var icon string    icon name
      *
      * @return string   HTML compatible string
      */

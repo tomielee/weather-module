@@ -21,12 +21,16 @@ class WeatherModel
     private $Forecast;
     private $curl;
     private $baseUrl;
+    private $geoUrl;
     private $exclude;
     private $excludeMulti;
     private $test;
     private $url;
     private $urls;
+    private $geo;
     protected $key;
+
+
 
     public function __construct()
     {
