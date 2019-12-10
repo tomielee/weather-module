@@ -18,6 +18,8 @@ git:
 
 before_script:
     - make install
+    - rsync -av vendor/jeneljenel/weather-module/config ./
+    - rsync -av vendor/jeneljenel/weather-module/view/weather ./view
 
 script:
     - make check
