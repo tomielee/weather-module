@@ -1,4 +1,6 @@
-WEATHER MODULE
+[![Build Status](https://travis-ci.org/jeneljenel/weather-module.svg?branch=master)](https://travis-ci.org/jeneljenel/weather-module)
+
+WEATHER MODULE FOR ANAX
 ==================================
 
 A weather forecast works with Anax framework.
