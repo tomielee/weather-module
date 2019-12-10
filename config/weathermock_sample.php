@@ -20,9 +20,9 @@
 
 return [
     "key" => "yoursecretkey",
-    "baseUrl" => "pwd/me/htdocs/weather/mock",
+    "baseUrl" => "http://www.student.bth.se/~jelf18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/weather/mock?",
     "exclude" => "",
     "excludeMulti" => "",
     "test" => true,
-    "geoUrl" => "pwd/me/htdocs/weather/geomock"
+    "geoUrl" => "http://www.student.bth.se/~jelf18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/weather/geomock?"
 ];
