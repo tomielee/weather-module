@@ -20,9 +20,9 @@
 
 return [
     "key" => "yoursecretkey",
-    "baseUrl" => "http://localhost:8080/me/htdocs/weather/mock",
+    "baseUrl" => "pwd/me/htdocs/weather/mock",
     "exclude" => "",
     "excludeMulti" => "",
     "test" => true,
-    "geoUrl" => "ttp://localhost:8080/me/htdocs/weather/geomock"
+    "geoUrl" => "pwd/me/htdocs/weather/geomock"
 ];
