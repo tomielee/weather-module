@@ -46,7 +46,6 @@ class WeatherController implements ContainerInjectableInterface
     {
         $title = "Weather";
         $page = $this->di->get("page");
-        $request = $this->di->get("request");
 
         $data = [
             "title" => $title,

@@ -22,7 +22,7 @@ class WeatherModel
     private $curl;
     private $baseUrl;
     private $exclude;
-    private $excpludeMulti;
+    private $excludeMulti;
     private $test;
     private $url;
     private $urls;
