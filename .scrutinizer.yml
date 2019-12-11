@@ -9,11 +9,7 @@ build:
         analysis:
             tests:
                 override:
-                    - php-scrutinizer-run
-    dependencies:
-        before:
-            - cp config/weather_sample.php config/weather.php
-            - cp config/weathermock_sample.php config/weathermock.php            
+                    - php-scrutinizer-run     
     tests-and-coverage:
         tests:
             override:
