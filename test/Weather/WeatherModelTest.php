@@ -33,8 +33,8 @@ class WeatherModelTest extends TestCase
         $this->weatherModel = $di->get("weather");
         $cfg = $this->di->get("configuration");
 
-        $config = $cfg->load("weathermock.php");
-        $this->weatherModel->setConfig($config['config']);
+        // $config = $cfg->load("weathermock.php");
+        // $this->weatherModel->setConfig($config['config']);
     }
 
 
@@ -82,6 +82,5 @@ class WeatherModelTest extends TestCase
         $this->assertIsArray($res);
         $this->assertEquals("baseTest/keyTest/lat,lon,$date[0]/excludeMultiTest", $res[0]);
         $this->assertEquals("baseTest/keyTest/lat,lon,$date[1]/excludeMultiTest", $res[1]);
-
     }
 }

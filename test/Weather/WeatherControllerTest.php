@@ -34,10 +34,10 @@ class WeatherControllerTest extends TestCase
 
         //setup mock
         $weatherModel = $di->get("weather");
-        $cfg = $this->di->get("configuration");
+        // $cfg = $this->di->get("configuration");
 
-        $config = $cfg->load("weathermock.php");
-        $weatherModel->setConfig($config['config']);
+        // $config = $cfg->load("weathermock.php");
+        // $weatherModel->setConfig($config['config']);
         $this->controller = new WeatherController();
         $this->controller->setDI($this->di);
         $this->controller->initialize();
