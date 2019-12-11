@@ -18,9 +18,6 @@ git:
 
 before_script:
     - make install
-    - cp config/weather_sample.php config/weather.php
-    - cp config/weathermock_sample.php config/weathermock.php
-
 
 script:
     - make check

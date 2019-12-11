@@ -29,8 +29,6 @@ jobs:
                     - ./vendor
                 key: v1-dependencies-{{ checksum "composer.json" }}
 
-            - run: cp config/weather_sample.php config/weather.php
-            - run: cp config/weathermock_sample.php config/weathermock.php
             - run: make check
             - run: make test
 
