@@ -1,6 +1,20 @@
 Revision history
 =================================
 
+v1.0.9 (2019-12-11)
+---------------------------------
+
+* Added some tests for methods in weatherModel.
+* Added test/config files.
+* Fixed error bugs for the rest API.
+
+
+v1.0.8 (2019-12-09)
+---------------------------------
+
+* Fixed handle different kinds of errors.
+
+
 v1.0.7 (2019-12-10)
 ---------------------------------
 
