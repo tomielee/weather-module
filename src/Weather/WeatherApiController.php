@@ -34,7 +34,7 @@ class WeatherApiController implements ContainerInjectableInterface
 
     /**
      * Return json for method get
-     * GET mountpoint api/json?=<location>
+     * GET mountpoint /json?=<location>
      * @param location
      *
      * @return array
@@ -47,9 +47,17 @@ class WeatherApiController implements ContainerInjectableInterface
         $location = $request->getGet("location", "");
         $radio = $request->getGet("forecast", "week");
         $geo = $weatherModel->getGeo($location);
-        $data = $weatherModel->getAll($radio);
-        // var_dump($data);
-        return [$data];
+        
+        if (empty($location)) {
+            $data = [
+                "message" => "No location provided. Please try again."
+            ];
+            return [$data, 400];
+        } else {
+            $data = $weatherModel->getAll($radio);
+        }
+
+        return [$data, 200];
     }
 
 

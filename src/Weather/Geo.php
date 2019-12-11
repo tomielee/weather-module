@@ -16,16 +16,16 @@ class Geo
     
     public function getLat() : string
     {
-        return $this->data[0]['lat'];
+        return $this->data[0]['lat'] ?? "Could nog get 'lat'.";
     }
 
     public function getLon() : string
     {
-        return $this->data[0]['lon'];
+        return $this->data[0]['lon'] ?? "Could not get 'lon'.";
     }
 
     public function getDisplayName() : string
     {
-        return $this->data[0]['display_name'];
+        return $this->data[0]['display_name'] ?? "Could not get 'display_name'.";
     }
 }

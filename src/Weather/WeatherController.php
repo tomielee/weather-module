@@ -83,7 +83,6 @@ class WeatherController implements ContainerInjectableInterface
 
         $radio = $request->getPost("radio");
         $data = $weatherModel->getAll($radio);
-        // var_dump($data);
     
         $page->add("weather/index", $data);
         $page->add("weather/header", []);
@@ -98,8 +97,6 @@ class WeatherController implements ContainerInjectableInterface
     */
     public function apiActionGet() : object
     {
-        $baseURL = $this->di->get("request")->getBaseUrl();
-
         $data = [
             "title" => "API"
         ];

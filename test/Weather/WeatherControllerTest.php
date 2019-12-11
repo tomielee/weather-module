@@ -55,9 +55,16 @@ class WeatherControllerTest extends TestCase
         $body = $res->getBody();
         $this->assertInstanceOf("Anax\Response\Response", $res);
         $this->assertContains("<title>Weather ", $body);
-
-        //test with error
+    }
+    /**
+     * Test GET /weather
+     * with error
+     */
+    public function testIndexActionGetError()
+    {
+        $controller = $this->controller;
         $this->di->get("session")->set("error", true);
+
         $res = $controller->indexActionGet();
         $body = $res->getBody();
         $this->assertContains("No valid geografic position. Try again.", $body);
@@ -89,10 +96,20 @@ class WeatherControllerTest extends TestCase
         $body = $res->getBody();
         $this->assertInstanceOf("Anax\Response\Response", $res);
         $this->assertContains("Weather forecast ", $body);
+    }
 
+    /**
+     * Tet the POST /weather, /weather/index
+     * with error
+     * should redirect
+     */
+    public function testIndexActionPostRedirect()
+    {
 
-        //test Not Valid - should be redirect
-        $this->di->get("request")->setPost("location", $locationNotValid);
+        $controller = $this->controller;
+
+        $testLocation = "";
+        $this->di->get("request")->setPost("location", $testLocation);
 
         $res = $controller->indexActionPost();
         $headers = $res->getHeaders();

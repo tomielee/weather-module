@@ -1,15 +1,6 @@
 <?php
 namespace Jenel\Weather;
 
-function newError($status, $message)
-{
-    $error = [
-        "status" => $status,
-        "message" => $message
-    ];
-    return $error;
-}
-
 /**
  * Return content for weatherController
  * uses $di->get("curl")
@@ -63,7 +54,7 @@ class WeatherModel
      *
      * @return void
      */
-    private function getUrl($lat, $lon) : string
+    public function getApiUrl($lat, $lon) : string
     {
         if ($this->test) {
             $this->url = $this->baseUrl;
@@ -78,8 +69,10 @@ class WeatherModel
      *
      * @return array
      */
-    private function getUrls($lat, $lon, $days) : array
+    public function getApiUrls($lat, $lon, $days) : array
     {
+        $urls = $this->urls;
+
         if ($this->test) {
             $this->urls = [ 0 => $this->baseUrl ];
         } else {
@@ -90,7 +83,6 @@ class WeatherModel
             };
             $this->urls = $urls;
         }
-
         return $this->urls;
     }
 
@@ -110,6 +102,7 @@ class WeatherModel
         }
 
         $result = $curl->curlOne($url);
+         
         $geo = [
             "geo" => new Geo($result)
         ];
@@ -128,9 +121,9 @@ class WeatherModel
     public function getWeek($lat, $lon) : array
     {
         $curl = $this->curl;
-        $url = $this->getUrl($lat, $lon);
+        $week = array();
+        $url = $this->getApiUrl($lat, $lon);
         $result = $curl->curlOne($url);
-        $week;
 
         if (array_key_exists('error', $result)) {
             $data = [
@@ -160,7 +153,8 @@ class WeatherModel
     public function getPast($lat, $lon) : array
     {
         $curl = $this->curl;
-        $urls = $this->getUrls($lat, $lon, 30);
+        $data = array();
+        $urls = $this->getApiUrls($lat, $lon, 30);
 
         $multiresult = $curl->curlMulti($urls);
 
@@ -190,12 +184,9 @@ class WeatherModel
      */
     public function getAll($radio) : array
     {
-        if (empty($this->geo)) {
-            return newError("Error", "No location provided");
-        };
-
         $lat = $this->geo->getLat();
         $lon = $this->geo->getLon();
+
         if ($radio == "week") {
             $forecast = $this->getWeek($lat, $lon);
         } else if ($radio == "past") {
@@ -208,7 +199,6 @@ class WeatherModel
             "lon" => $lon,
             "result" => $forecast,
         ];
-
         return $data;
     }
 }

@@ -9,6 +9,8 @@ class GeoMock
      */
     public function getGeo() : array
     {
+        $data = array();
+        
         $data[0] = [
             0 => [
             'lat' => 61.06037785,

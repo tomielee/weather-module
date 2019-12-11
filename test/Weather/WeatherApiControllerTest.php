@@ -43,17 +43,34 @@ class WeatherApiControllerTest extends TestCase
     }
 
     /**
-     * Test route "json"
+     * Test route json?location=Dalarna
      */
     public function testJsonActionGet()
     {
-        $locationValid = "Stockholm";
-        $locationNotValid = "";
+        $testLocation = "Dalarna";
 
-        $this->di->get("request")->setGet("location", $locationValid);
+        //test valid location
+        $this->di->get("request")->setGet("location", $testLocation);
 
         $res = $this->controller->jsonActionGet();
         $this->assertIsArray($res);
+    }
+
+    /**
+     * Test route "json?location="
+     */
+    public function testJsonActionGetBadRequest()
+    {
+        $testLocation = "";
+
+        $this->di->get("request")->setGet("location", $testLocation);
+        $res = $this->controller->jsonActionGet();
+
+        $json = $res[0];
+        $status = $res[1];
+        $this->assertIsArray($res);
+        $this->assertContains("No location provided. Please try again.", $json['message']);
+        $this->assertEquals(400, $status);
     }
 
     /**
