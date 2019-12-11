@@ -5,8 +5,8 @@
  * geoUrl
  *
  * should be http://localhost:{port}/{projectname}/htdocs/weather/mock and /geomock
- *
- * to run tests.
+ * after rsync och scaffolding in the project.
+ * to run tests on local.
  *
  *
 */

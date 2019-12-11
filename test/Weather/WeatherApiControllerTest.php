@@ -29,12 +29,7 @@ class WeatherApiControllerTest extends TestCase
         // View helpers uses the global $di so it needs its value
         $di = $this->di;
 
-        //setup mock
         $weatherModel = $di->get("weather");
-        // $cfg = $this->di->get("configuration");
-
-        // $config = $cfg->load("weathermock.php");
-        // $weatherModel->setConfig($config['config']);
 
         //initialize the controller.
         $this->controller = new WeatherApiController();
@@ -49,7 +44,6 @@ class WeatherApiControllerTest extends TestCase
     {
         $testLocation = "Dalarna";
 
-        //test valid location
         $this->di->get("request")->setGet("location", $testLocation);
 
         $res = $this->controller->jsonActionGet();
