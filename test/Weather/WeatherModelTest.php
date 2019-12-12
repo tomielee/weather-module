@@ -33,8 +33,6 @@ class WeatherModelTest extends TestCase
         $this->weatherModel = $di->get("weather");
         $cfg = $this->di->get("configuration");
 
-        // $config = $cfg->load("weathermock.php");
-        // $this->weatherModel->setConfig($config['config']);
     }
 
 
@@ -51,9 +49,7 @@ class WeatherModelTest extends TestCase
             "exclude" => "/excludeTest"
         ];
         $weatherModel->setConfig($testConfig);
-        
         $res = $weatherModel->getApiUrl("lat", "lon");
-        // var_dump($res);
         $this->assertIsString($res);
         $this->assertEquals("baseTest/keyTest/lat,lon/excludeTest", $res);
     }

@@ -20,5 +20,6 @@ namespace Anax\View;
 </div>
     <?php }
 } ?> 
+<p><a href="">Search for another position</a></p>
 </article>
 <p>
